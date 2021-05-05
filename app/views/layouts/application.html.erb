@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TestApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="mt-4">
+      <% if flash[:notice] -%>
+        <div class="text-center">
+          <b class="text-danger"><%= flash[:notice] -%></b> <br>
+        </div>
+      <% elsif flash[:success] -%>
+        <div class="text-center">
+          <b class="text-success"><%= flash[:success] -%></b>
+        </div>
+      <% end -%>
+    </div>
+    <%= yield %>
+  </body>
+</html>

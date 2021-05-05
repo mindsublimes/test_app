@@ -1,0 +1,40 @@
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-3"></div>
+    <div class="col-md-5">
+      <div class="text-center">
+        <%= image_tag "https://d30o7qbghf97ws.cloudfront.net/micolet-logo.svg" , width: "330px" %>
+        <p class="text-muted"><%= t "landing_page.description"%></p>
+        <h3><%= t "landing_page.welcome"%> </h3>
+        <p><%= t "landing_page.subcribe"%></p>
+          <%= form_for @news_letter, url: news_letters_path, method: :post do |f| %>
+            <% if @news_letter.errors.present? %>
+              <p class="text-danger"><b>Errors:</b></p>
+              <% @news_letter.errors.full_messages.each do |error| %>
+                <p class="text-danger"><%= error %></p>
+              <% end %>
+            <% end %>
+          <%= f.label :email, "Email" ,class: "text-secondary float-left"%>
+          <%= email_field_tag :email,nil , class: 'form-control'%>
+            <p class="text-left mt-3 text-secondary"><%= t "landing_page.preferences"%></p>
+          <div class="ml-4 mt-2">
+            <div class="row">
+              <%= check_box_tag :preferences_1, "women",false ,class: "mt-1"%>
+              <%= f.label t('landing_page.women'),class: "ml-2"%>
+            </div>
+            <div class="row">
+              <%= check_box_tag :preferences_2, "men",false ,class: "mt-1"%>
+              <%= f.label t('landing_page.men') ,class: "ml-2"%>  
+            </div>
+            <div class="row">
+              <%= check_box_tag :preferences_3, "child",false ,class: "mt-1"%>
+              <%= f.label t('landing_page.child') ,class: "ml-2"%>
+            </div>
+          </div>
+          <%= f.submit t('landing_page.subcribe_me') , class: "btn btn-success"%>
+          <% end -%> 
+      </div>
+    </div>
+  </div>
+</div>
